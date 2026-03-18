@@ -47,6 +47,21 @@ Use `gh issue create` with:
 - Appropriate labels (check available labels first: `gh label list`)
 - Full body from Step 2
 
+### Step 3b: GitHub Project Board
+
+If the repository has a GitHub Project board enabled, **all available fields must be filled**:
+
+1. **Add issue to project** — get issue node ID, add to project, get item ID
+2. **Status** → `Ready` (default for new actionable issues)
+3. **Priority** → assess from issue severity: P0 (critical/blocking), P1 (urgent/important), P2 (normal)
+   - If unclear, ask the person requesting the issue
+4. **Size** → estimate based on investigation: XS (< 1h), S (1-3h), M (3-8h), L (1-3d), XL (3d+)
+5. **Iteration** → always set to **current iteration** (compare today's date against iteration start dates)
+
+See `references/github-project.md` for field IDs, option IDs, and GraphQL mutations.
+
+**This step is mandatory — never skip it if the project board exists.**
+
 ### Step 4: Assign
 
 - If the operator already specified who → assign directly
