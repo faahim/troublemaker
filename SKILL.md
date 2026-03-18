@@ -74,6 +74,61 @@ If assigned to a team member, message them on WhatsApp:
 - Use their language preference
 - Use `message` tool with action `send`
 
+---
+
+## Part 2: PR Merge
+
+### Step 1: Review Check
+
+Before merging any PR:
+
+1. List all reviews and review comments: `gh pr view <number> --comments`, `gh pr checks <number>`
+2. Check AI bot reviews (automated code review bots) — look for unresolved feedback
+3. Check human reviews — any "changes requested" still open?
+
+For each unresolved review comment:
+- Is it addressed in a subsequent commit?
+- Is there a reply clarifying why it doesn't need to be resolved?
+- If neither → **do not merge**
+
+### Step 2: Block or Proceed
+
+**If unresolved items exist:**
+- Message the PR author (WhatsApp if team member, GitHub comment if external)
+- List the specific unresolved items
+- Ask them to either fix or clarify with a comment
+- Do NOT merge until resolved/clarified
+
+**If everything is resolved/clarified:**
+- Proceed to merge
+
+### Step 3: Merge
+
+Merge the PR: `gh pr merge <number> --squash` (or merge strategy as appropriate)
+
+### Step 4: Summary & Notify
+
+After successful merge, create a brief summary:
+- What was added/changed/fixed
+- Key files affected
+- Any breaking changes or things to watch
+
+Send this summary to:
+- **The person who requested the merge** (always)
+- **Faahim (+8801753303880)** (always — even if he is the one merging, he still gets the summary)
+
+If Faahim is the merger → one message to Faahim.
+If someone else is the merger → message to them + separate message to Faahim.
+
+### Step 5: Update ERP Task
+
+After merge:
+1. Find the related task on the ERP task board (match by issue title/link)
+2. Update task status to DONE via MCP
+3. If no matching task found, note it but don't fail
+
+---
+
 ## Rules
 
 - **Never fabricate API endpoints, types, or file paths** — verify they exist
