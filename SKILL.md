@@ -53,7 +53,21 @@ Use `gh issue create` with:
 - If not specified → ask: "কাকে assign করবো? নাকি backlog এ রাখবো?"
 - Assign via `gh issue edit <number> --add-assignee <username>`
 
-### Step 5: Notify
+### Step 5: Create ERP Task
+
+After the GitHub issue is created, sync it to the ERP task board via MCP (`dekhval-erp-mcp` skill):
+
+1. Read the `dekhval-erp-mcp` skill for connection details
+2. Create a task card using `tasks.task.create` with:
+   - Title matching the GitHub issue title
+   - Description including the GitHub issue link + brief summary
+   - Link the GitHub issue URL in the task
+   - Set appropriate priority (URGENT/HIGH/MEDIUM/LOW based on severity)
+   - Set status to TODO (or BACKLOG if unassigned)
+3. If someone is assigned on GitHub, find their ERP user and assign the task to them
+4. Pick the correct project (match to the relevant ERP project)
+
+### Step 6: Notify
 
 If assigned to a team member, message them on WhatsApp:
 - Keep it short — issue title + link + one-line context
