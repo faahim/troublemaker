@@ -1,0 +1,70 @@
+---
+name: troublemaker
+description: "Investigate bugs, plan features, and create verified GitHub issues with full implementation context. Use when: (1) a bug is reported or discovered, (2) a feature or change is requested, (3) any implementation work needs planning and issue creation. Handles the full workflow: investigate codebase → verify findings → create detailed issue → assign → notify team. Never includes assumptions — every claim is code-verified."
+---
+
+# Troublemaker
+
+Investigate, verify, plan, and file GitHub issues for bugs and features. Then assign and notify.
+
+## Core Principle
+
+**Zero assumptions.** Every claim in an issue must be verified against actual code. Wrong information in an issue leads to wrong implementation. You are not the implementer — gather enough verified context for whoever will implement it.
+
+## Workflow
+
+### Step 1: Investigate
+
+When a bug or feature is reported:
+
+1. **Understand the problem** — what's broken or what's needed
+2. **Trace the code path** — find relevant files, data flow, API calls
+3. **Verify every finding** — grep, read actual code, check types, confirm behavior
+4. **Stop at the right depth** — enough context for an implementer, not a full fix
+
+Verification checklist before including any claim:
+- [ ] Did I read the actual code, not assume from memory?
+- [ ] Did I confirm the function/variable/type exists exactly as I describe?
+- [ ] Did I verify file paths and line numbers?
+- [ ] Did I check for related code that might contradict my finding?
+- [ ] If I mention "X doesn't exist" — did I actually search for it?
+
+### Step 2: Plan
+
+Structure findings into an actionable issue:
+
+- **Problem** — clear description of what's wrong or what's needed
+- **Root cause / Analysis** — verified findings with file paths and line references
+- **Impact** — what's affected and why it matters
+- **Fix approach** — high-level direction (not full implementation)
+- **Files involved** — table of relevant files and their roles
+- **Fix checklist** — concrete actionable items
+
+### Step 3: Create Issue
+
+Use `gh issue create` with:
+- Clear, specific title
+- Appropriate labels (check available labels first: `gh label list`)
+- Full body from Step 2
+
+### Step 4: Assign
+
+- If the operator already specified who → assign directly
+- If not specified → ask: "কাকে assign করবো? নাকি backlog এ রাখবো?"
+- Assign via `gh issue edit <number> --add-assignee <username>`
+
+### Step 5: Notify
+
+If assigned to a team member, message them on WhatsApp:
+- Keep it short — issue title + link + one-line context
+- Use their language preference
+- Use `message` tool with action `send`
+
+## Rules
+
+- **Never fabricate API endpoints, types, or file paths** — verify they exist
+- **Never assume a status value, enum, or default** — check the schema/code
+- **If you can't verify something, say so explicitly** in the issue ("needs confirmation: ...")
+- **Don't go deeper than needed** — you're planning, not implementing
+- **Always check `gh label list`** before applying labels — don't use labels that don't exist
+- **One issue per distinct problem** — unless problems are tightly coupled
